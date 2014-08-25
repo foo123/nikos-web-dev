@@ -1,0 +1,518 @@
+html
+{
+    height: 100%;
+}
+body
+{
+    position: relative;
+    background: #e3e3e3;
+    color: #121212;
+    font-family: Trebuchet, Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    letter-spacing: 1px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+label, a
+{
+    cursor: pointer !important;
+}
+
+label:hover, a:hover
+{
+    color: #f52525;
+}
+
+#header
+{
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#nav
+{
+    font-size: 0.7em;
+    letter-spacing: 0.16em;
+    max-width: 240px;
+}
+
+#nav .menu
+{
+    margin-top: 20px;
+}
+
+#nav .content
+{
+    position: absolute;
+    margin:0;
+    padding:0;
+    top: 0;
+    left:0;
+    bottom:0;
+    right:0;
+    display: block;
+    background: #121212;
+    color: #efefef;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#nav .content:hover
+{
+    background: #e53535;
+}
+
+#footer
+{
+    margin-top:20px;
+    font-size: 0.9em;
+}
+
+.page p
+{
+    position: relative;
+    margin: 15px 0;
+    padding: 0 5px;
+    text-align: justify;
+    font-size: 0.8em;
+    line-height: 1.8em;
+    word-spacing: 0.6em;
+}
+
+.loader
+{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: transparent url("./359.gif") no-repeat 0 0;
+}
+
+#msg > span
+{
+    font-size: 0.7em;
+    font-style: oblique;
+    display: inline-block;
+    padding: 3px 5px;
+}
+
+.successtext
+{
+    color: green;
+}
+
+.errortext
+{
+    color: red;
+}
+
+.round-rotated-button
+{
+    background: #e3e3e3;
+    border: 1px solid #afafaf;
+    position: relative;
+    margin: 0;
+    padding:0;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    
+    overflow: hidden;
+    border-radius: 50%;
+    
+    transform: rotate(45deg);
+    writing-mode: lr-tb;
+    
+    transition: all 0.5s ease;
+}
+
+.round-rotated-button:after
+{
+    color: #121212;
+    position: absolute;
+    display: block;
+    z-index: 5;
+    content: "close";
+    font-size: 10px;
+    top: 50%;
+    left: 50%;
+    margin-top: -6px;
+    margin-left: -14px;
+    
+    transition: color 0.5s ease;
+}
+
+.round-rotated-button:active,
+.round-rotated-button:hover
+{
+    transform: rotate(0deg);
+}
+
+.round-rotated-button:active:after,
+.round-rotated-button:hover:after
+{
+    color: #f52525;
+}
+
+.form-field
+{
+    background: #222222;
+    color: #f52525;
+    padding: 5px;
+    border-left: 2px solid #050505;
+    border-top: 2px solid #050505;
+    border-right: 2px solid #777;
+    border-bottom: 2px solid #777;
+}
+
+.form-field:focus 
+{
+    outline: none;
+    animation: pulsating-glow 1.5s infinite;
+    /*box-shadow: 0 0 10px yellow inset;*/
+}
+    
+.label
+{
+    font-size: 0.8em;
+    font-weight:bold;
+    letter-spacing: 0.16em;
+}
+
+.punchline
+{
+    font-weight: bold;
+    /*text-transform: uppercase;*/
+}
+
+.sidenote
+{
+    font-size: 0.5em;
+    color: #121212;
+    margin: 5px;
+    display: block;
+}
+
+.bracket
+{
+    position: relative;
+    display: inline-block;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left:1em;
+    padding-right:1em;
+}
+.bracket:before,
+.bracket:after
+{
+    position: absolute;
+    overflow: hidden;
+    display: block;
+    color: #f52525;
+    font-size: 3em;
+    text-shadow: 1px 5px 3px #444;
+}
+.bracket:before
+{
+    content: "{";
+    left: 0;
+    /*top: -1px;*/
+    bottom: 0;
+}
+.bracket:after
+{
+    content: "}";
+    right: 0;
+    bottom: 0;
+}
+
+.text
+{
+    color: #050505;
+    font-weight: bold;
+}
+
+.inset
+{
+    color: #dadada;
+    text-shadow: 1px 1px 0px #555;
+}
+
+/* Don't show shadows when selecting text */
+.inset::-moz-selection { color: #121212; text-shadow: none; }
+.inset::selection { color: #121212; text-shadow: none; }
+
+.button 
+{
+    box-shadow:inset 0px 1px 0px 0px #f5706e;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f52525), color-stop(1, #c72724) );
+    background:-moz-linear-gradient( center top, #f52525 5%, #c72724 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f52525', endColorstr='#c72724');
+    background-color:#f52525;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+    border-bottom-right-radius:20px;
+    border-bottom-left-radius:20px;
+    text-indent:0;
+    border:1px solid #d02718;
+    display:inline-block;
+    color:#ffffff;
+    font-family:Arial;
+    font-weight:bold;
+    font-style:normal;
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 0px #810e05;
+    height: 40px;
+    line-height: 40px;
+    font-size:0.8em;
+}
+.button:hover 
+{
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c72724), color-stop(1, #f52525) );
+    background:-moz-linear-gradient( center top, #c72724 5%, #f52525 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c72724', endColorstr='#f52525');
+    background-color:#c72724;
+}
+.button:active 
+{
+    position:relative;
+    top:1px;
+}
+.button 
+{
+    margin: 3px 2px;
+    position:relative;
+    cursor:pointer;
+}
+
+.button:active,
+.button:focus
+{
+    outline: none;
+}
+
+#logo
+{
+    padding-bottom: 18.45%;
+    background: transparent url("./nikos-web-dev-piss.png") no-repeat 0 0;
+    background-size: 100%;
+}
+
+.menu-sprite
+{
+    /* responsive sprite */
+    padding-bottom: 100%;
+    background: transparent url("./menu-sprite.png") no-repeat 0 0;
+    /* number of sprites x 100% */
+    background-size: 300%;
+}
+/* sprite index x (100/num_sprites-1)% */
+#techno-sprite.menu-sprite
+{
+    background-position: 0% 0;
+}
+#contact-sprite.menu-sprite
+{
+    background-position: 50% 0;
+}
+#github-sprite.menu-sprite
+{
+    background-position: 100% 0;
+}
+
+/* css animations */
+
+/* auxilliary animations */
+@keyframes showIt
+{
+    0% { opacity: 1; }
+    100% { opacity: 1; }
+}
+@keyframes hideIt
+{
+    0% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* primary animations */
+@keyframes sectionIn 
+{
+    0% { opacity: 0.2; transform: translateX(-100%) scale(0.6); }
+    50% { opacity: 1; transform: translateX(0px) scale(0.6); }
+    100% { z-index: 10; opacity: 1; transform: translateX(0px) scale(1);}
+}
+@keyframes sectionOut 
+{
+    0% { transform: translateX(0px) scale(1) skew(0deg); }
+    50% { transform: translateX(10%) skew(-15deg); }
+    90% { transform: translateX(-90%) skew(15deg); }
+    100% { z-index: 1; transform: translateX(-120%) skew(15deg); }
+}
+@keyframes panelOpen 
+{
+    0% { max-height: 0px; }
+    100% { max-height: 3000px; }
+}
+@keyframes panelClose
+{
+    0% { height: 600px; max-height: 3000px; }
+    100% { height: 600px; max-height: 0px; }
+}
+
+/* adapted from http://www.dreamdealer.nl */
+@keyframes pulsating-glow {
+    0%  { box-shadow: 0 0 0 #f52525; }
+    50%   { box-shadow: 0 0 20px #f52525;   }
+    100%  { box-shadow: 0 0 0 #f52525;    }
+}
+
+/* some defaults */
+.animated 
+{
+    /* duration 0.5 sec */
+    animation-duration: 0.5s;
+    
+    /* delay 0 sec */
+    animation-delay: 0s;
+    
+    /* one iteration */
+    animation-iteration-count: 1;
+    
+    /* linear easing */
+    animation-timing-function: linear;
+    
+    /* fill mode both */
+    animation-fill-mode: both;
+}
+
+#panel.animated
+{
+    overflow: hidden;
+    max-height: 0px;
+    height: auto;
+}
+section.animated
+{
+    overflow: hidden;
+    float: none;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /*opacity: 1;*/
+    
+    /* init sections using auxilliary animations as styles */
+    animation-name: hideIt;
+    
+    animation-delay: 0s;
+    
+    animation-iteration-count: 1;
+    
+    animation-fill-mode: forwards;
+}
+
+/* open panel animation */
+input.controller:not(#closeController):checked ~ #container #panel.animated
+{
+    animation-name: panelOpen;
+    
+    animation-delay: 0s;
+    
+    animation-timing-function: ease;
+}
+
+/* close panel animation */
+#closeController:checked ~ #container #panel.animated
+{
+    max-height: 3000px;
+    
+    animation-name: panelClose;
+    
+    animation-delay: 0.5s;
+    
+    animation-timing-function: ease-in;
+}
+
+/* section in animation */
+#page1Controller:checked ~ #container #panel section#page1,
+#contactController:checked ~ #container #panel section#contact,
+#technoController:checked ~ #container #panel section#techno
+{
+    position: relative;
+    opacity: 0;
+    
+    animation-name: showIt, sectionIn;
+    
+    animation-delay: 0.6s;
+    
+    animation-duration: 0.5s;
+    
+    animation-timing-function: ease-in;
+}
+
+/* section out animation */
+input.controller:not(#page1Controller):checked ~ #container #panel section#page1,
+input.controller:not(#contactController):checked ~ #container #panel section#contact,
+input.controller:not(#technoController):checked ~ #container #panel section#techno
+{
+    position: absolute;
+    
+    animation-name: sectionOut, hideIt;
+    
+    animation-delay: 0s, 1s;
+    
+    animation-duration: 0.5s;
+    
+    animation-timing-function: ease-out;
+}
+
+/* menu fade in/out animations */
+.animated.fadeIn
+{
+    opacity: 0;
+}
+.animated.fadeOut
+{
+    /* fade in on mouse hover out */
+    transition: opacity 1s;
+}
+.menu:hover .animated.fadeOut
+{
+    /* fade out on mouse hover */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.menu:hover .animated.fadeIn
+{
+    /* fade in on mouse hover */
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+/* media responsive queries */
+@media all and (max-width: 900px)
+{
+    /* responsive font sizes */
+    #nav
+        {
+        font-size: 0.6em;
+        letter-spacing: 0.16em;
+    }
+    
+    #footer
+        {
+        font-size: 0.8em;
+    }
+}
+
+.invis
+{
+    margin:0;
+    padding:0;
+    position:absolute;
+    opacity: 0;
+    font-size:1px;
+}
