@@ -317,7 +317,7 @@ label:hover, a:hover
 {
     background-position: 50% 0;
 }
-#github-sprite.menu-sprite
+#projects-sprite.menu-sprite
 {
     background-position: 100% 0;
 }
@@ -439,6 +439,7 @@ input.controller:not(#closeController):checked ~ #container #panel.animated
 /* section in animation */
 #page1Controller:checked ~ #container #panel section#page1,
 #contactController:checked ~ #container #panel section#contact,
+#projectsController:checked ~ #container #panel section#projects,
 #technoController:checked ~ #container #panel section#techno
 {
     position: relative;
@@ -456,6 +457,7 @@ input.controller:not(#closeController):checked ~ #container #panel.animated
 /* section out animation */
 input.controller:not(#page1Controller):checked ~ #container #panel section#page1,
 input.controller:not(#contactController):checked ~ #container #panel section#contact,
+input.controller:not(#projectsController):checked ~ #container #panel section#projects,
 input.controller:not(#technoController):checked ~ #container #panel section#techno
 {
     position: absolute;

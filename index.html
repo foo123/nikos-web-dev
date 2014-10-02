@@ -27,24 +27,29 @@
                 overflow: hidden;
             }
         </style>
-        <script type="text/javascript" src="jquery.min.js"></script>
-        <script type='text/javascript'>
-        /* <![CDATA[ */
-            
+        <!-- Include Font Awesome -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+        <!-- Include editor style file -->
+        <link href="../css/froala_editor.min.css" rel="stylesheet" type="text/css" />
+        <!--<script type="text/javascript" src="jquery.min.js"></script>-->
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!-- Include editor javascript file -->
+        <!--<script src="../js/froala_editor.min.js"></script>-->
+        <script type='text/javascript'>/* <![CDATA[ */
+        !function( window, $ ) {
             var $mailform, $reqfields, $submit, $reset, $msg, $loader, $butts, $sections, are_hidden = 1, made_visible = 0;
             
             var trim = function(s) { return s.replace(/^\s+/, '').replace(/\s+$/, ''); };
             var isOpera = /Opera|OPR\//.test(navigator.userAgent);
             
             /* document ready */
-            jQuery(function($){
-                
+            $(function( ){
                 /* assign global vars */
-                if (isOpera)  $('body').addClass('opera');
+                if (isOpera) $('body').addClass('opera');
                 
                 $mailform = $('#mailform');
-                $submit = $('#submitbt', $mailform);
-                $reset = $('#resetbt', $mailform);
+                $submit = $mailform.find('#submitbt');
+                $reset = $mailform.find('#resetbt');
                 $reqfields = $mailform.find(".req");
                 $msg = $("#msg");
                 $loader = $("#loader1").hide();
@@ -123,9 +128,9 @@
                     $loader.hide();
                     $submit.removeAttr("disabled");
                 });
-            });          
-        /*]]>*/
-        </script>
+            });  
+        }( window, jQuery );
+        /*]]>*/</script>
     </head>
 
     <body class="center-vertical-wrapper">
@@ -142,6 +147,7 @@
         <!-- page controllers -->
         <input name="menuControllers" class="controller invis" type="radio" id="technoController" />
         <input name="menuControllers" class="controller invis" type="radio" id="contactController" />
+        <input name="menuControllers" class="controller invis" type="radio" id="projectsController" />
         <input name="menuControllers" class="controller invis" type="radio" id="page1Controller" />
         <input name="menuControllers" class="controller invis" type="radio" id="closeController" />
         <!-- /page controllers -->
@@ -166,33 +172,32 @@
                         </div>
                         <div class="fluid col-1-3 float-left menu">
                             <div class="relative aspect asp-1-1"></div>
+                            <label for="projectsController" class="content">
+                                <p class="text text-center center-transform animated fadeIn">projects (github)</p>
+                                <p id="projects-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
+                            </label>
+                        </div>
+                        <div class="fluid col-1-3 float-left menu">
+                            <div class="relative aspect asp-1-1"></div>
                             <label for="contactController" class="content">
                                 <p class="text text-center center-transform animated fadeIn">contact me</p>
                                 <p id="contact-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
                             </label>
                         </div>
-                        <div class="fluid col-1-3 float-left menu">
-                            <div class="relative aspect asp-1-1"></div>
-                            <a href="http://foo123.github.io/" target="_blank" class="content">
-                                <p class="text text-center center-transform animated fadeIn">github projects</p>
-                                <p id="github-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
-                            </a>
-                        </div>
                     </nav>
                 
                 </header>
                 
-                <!-- page controllers -->
-                <!--<input name="menuControllers" class="controller invis" type="radio" id="technoController" />
-                <input name="menuControllers" class="controller invis" type="radio" id="contactController" />
-                <input name="menuControllers" class="controller invis" type="radio" id="page1Controller" />
-                <input name="menuControllers" class="controller invis" type="radio" id="closeController" />-->
-                <!-- /page controllers -->
                 <div id="panel" class="fluid col-1-1 animated">
                     
                     <section id="techno" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
                         <div class="fuild col-1-1 text-center"><label for="closeController" class="round-rotated-button">close</label></div>
                         <img src="logos.png" title="web design and development in web 2.0 mashup html css w3c jquery mootools flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js dsp digital signal processing seo search engine optimization security scalability mobile app development phonegap" alt="web design and development in web 2.0 mashup html css w3c jquery mootools flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js dsp digital signal processing seo search engine optimization security scalability mobile app development phonegap" />
+                    </section>
+                    
+                    <section id="projects" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
+                        <div class="fuild col-1-1 text-center"><label for="closeController" class="round-rotated-button">close</label></div>
+                        <a href="http://foo123.github.io/" target="_blank"><img src="projects.png" title="Projects: Classy.js, Contemplate Engine, ModelView.js MVC, Asynchronous.js, Dromeo Router, PublishSubscribe, Dialect SQL, Filter.js Image Processing, HAAR.js Feature Detection, MOD3.js 3D Modification Library, AS3 Transitin Library, CodeMirrorGrammar.js grammar-based Codemirror syntax highlight" /></a>
                     </section>
                     
                     <section id="contact" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
@@ -267,7 +272,7 @@
                 
                 <footer id="footer" role="contentinfo" class="fluid col-1-1 text-center">
                     <strong class="punchline">Get the job done.</strong> 
-                    <span class="bracket inset">Freelance Code</span>
+                    <span class="inset">Freelance</span> <span class="bracket inset">Code</span>
                 </footer>
             
             </div>
