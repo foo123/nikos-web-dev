@@ -1,0 +1,114 @@
+/* stylised inputs radios/checkboxes/selectboxes */
+form.form input[type=radio].hide,
+form.form input[type=checkbox].hide
+{
+    display: none !important;
+}
+
+form.form input[type=radio] + label.replace,
+form.form input[type=checkbox] + label.replace
+{
+    position: relative;
+    display: inline-block;
+    margin: 0;padding: 0;
+    overflow: visible;
+    vertical-align: middle;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 8px;
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 16px;
+    font-family: sans-serif;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-color: #fafafa;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(18,18,18,0.2);
+    color: #121212;
+    border-radius: 15%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+    text-align: center;
+    z-index: 1;
+}
+form.form input[type=radio] + label.replace:before,
+form.form input[type=checkbox] + label.replace:before
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: absolute; display: block; overflow: visible;
+    padding: 0; margin: 0;
+    top: 50%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: inherit;
+    font-size: 75%; font-family: inherit; font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.1);
+    color: inherit; border: 0; background: none;
+    content: " ";
+    z-index: 2;
+}
+form.form input[type=radio] + label.replace
+{
+    border-radius: 50%;
+}
+form.form input[type=radio] + label.replace:before
+{
+    border-radius: 50%;
+}
+form.form input[type=checkbox]:disabled + label.replace,
+form.form input[type=radio]:disabled + label.replace
+{
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255,.6), rgba(255,255,255,.6));
+    background-image: -moz-linear-gradient(top, rgba(255,255,255,.6), rgba(255,255,255,.6));
+    background-image: -ms-linear-gradient(top, rgba(255,255,255,.6), rgba(255,255,255,.6));
+    background-image: -o-linear-gradient(top, rgba(255,255,255,.6), rgba(255,255,255,.6));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.6), rgba(255,255,255,.6));
+}
+form.form input[type=checkbox]:disabled + label.replace:before,
+form.form input[type=radio]:disabled + label.replace:before
+{
+    opacity: 0.6;
+}
+/* DEFAULT */
+form.form input[type=checkbox]:checked + label.replace:before,
+form.form input[type=radio]:checked + label.replace:before
+{
+    content: "\2714";
+}
+
+form.form input[type=radio].inset + label.replace,
+form.form input[type=checkbox].inset + label.replace
+{
+    background-color: #fefefe;
+    border-color: rgba(0,0,0,.2);
+    box-shadow: 1px 1px rgba(0,0,0,.1) inset, 2px 2px rgba(0,0,0,.1) inset, 2px 2px rgba(0,0,0,.8) inset,
+                2px 2px 2px rgba(0,0,0,.3) inset;
+}
+form.form input[type=radio].inset:checked + label.replace,
+form.form input[type=checkbox].inset:checked + label.replace
+{
+    box-shadow: 1px 1px rgba(0,0,0,.1) inset, 2px 2px rgba(0,0,0,.1) inset, 2px 2px rgba(0,0,0,.8) inset,
+                2px 2px 3px rgba(0,0,0,.5) inset;
+}

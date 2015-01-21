@@ -20,11 +20,22 @@
     <meta name="description" content="nikos full-stack development web development applications web design freelance athens greece php python c c++ node javascript java spring hibernate actionscript flash html css joomla wordpress modx drupal mobile dsp" /> 
     <title>nikos web development full-stack development freelance athens greece</title>
     <link rel="stylesheet" href="style.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="controls.min.css" type="text/css" media="screen" />
     <style type="text/css">
         label.round-rotated-button
         {
             color: transparent;
             overflow: hidden;
+        }
+        form.form input[type=radio] + label.replace,
+        form.form input[type=checkbox] + label.replace
+        {
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 24px;
+            color: #f52525;
+            background-color: #222;
         }
     </style>
     <!-- Include Font Awesome -->
@@ -197,7 +208,7 @@
                 
                 <section id="projects" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
                     <div class="fuild col-1-1 text-center"><label for="closeController" class="round-rotated-button">close</label></div>
-                    <a href="http://foo123.github.io/" target="_blank"><img src="projects.png" title="Projects: Classy.js, Contemplate Engine, ModelView.js MVC, Asynchronous.js, Dromeo Router, PublishSubscribe, Dialect SQL, Filter.js Image Processing, HAAR.js Feature Detection, MOD3.js 3D Modification Library, AS3 Transition Library, CodeMirrorGrammar.js grammar-based Codemirror syntax highlight" /></a>
+                    <a href="http://foo123.github.io/" target="_blank"><img src="projects.png" title="Projects: Classy.js Object-Oriented Framework, Contemplate Template Engine, ModelView MVVM / MVC Framework, Dromeo Router, Dialect SQL, Xpresion Expression Parser Engine, Beeld Builder Framework, Filter.js Image Processing Library, HAAR.js Computer Vision Feature Detection, AS3 Transitions Library, RegexAnalyzer Regular Expressions Analyzer, PublishSubscribe Pattern Module" /></a>
                 </section>
                 
                 <section id="contact" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
@@ -213,7 +224,7 @@
                                 <li><b>cell:</b> (+30) 698 32 35 423</li>
                             </ul>
                         </div>
-                        <form id="mailform" class="fluid col-1-1 text-left clearfloat">
+                        <form id="mailform" class="fluid col-1-1 form text-left clearfloat">
                             <div class="fluid col-1-1">
                                 <div class="fluid col-5-6 text-left float-right">
                                     <div id="msg" class="fluid"></div>
@@ -235,6 +246,10 @@
                             <div class="fluid col-1-1" style="padding-right:5px;">
                                 <label for="utext" class='fluid col-1-6 label'>text (req)</label>
                                 <textarea class="fluid col-5-6 form-field req" name="utext" id="utext" rows="5"></textarea>
+                            </div>
+                            <div class="fluid col-1-1 text-right clearfloat" style="margin:10px 0 20px 0">
+                                <label for="usendreply" class="label">Send notification of sent mail</label> 
+                                <input type="checkbox" name="usendreply" id="usendreply" class="hide" value="yes" /><label for="usendreply" class="replace"></label>
                             </div>
                             <div class="fluid col-1-1 text-right clearfloat">
                                 <input type="reset" name="resetbt" id="resetbt" class="button fluid col-1-5 float-right" value="clear" />

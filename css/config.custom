@@ -1,0 +1,31 @@
+tasks =[{}]
+
+    build_css =[{}]
+        
+        src =[]
+            ./charset.css
+            ./normalize.css
+            ./responsive.css
+            #./animate.css
+            #./bubbles.css
+            ./style.css
+        @
+
+        minify ={}
+
+            cssmin =[]
+                #--no-minify
+                --remove-comments
+                --vendor-prefixes
+                --hsla2rgba
+                --rgb2hex
+                --embed-images
+                #--embed-fonts
+                #--embed-imports
+            @
+
+        @
+
+        out = ../style.min.css
+    @
+@
