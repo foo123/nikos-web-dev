@@ -81,14 +81,6 @@ label:hover, a:hover
     word-spacing: 0.6em;
 }
 
-.loader
-{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background: transparent url("./359.gif") no-repeat 0 0;
-}
-
 #msg > span
 {
     font-size: 0.7em;
@@ -126,7 +118,6 @@ label:hover, a:hover
     
     transition: all 0.5s ease;
 }
-
 .round-rotated-button:after
 {
     color: #121212;
@@ -142,17 +133,21 @@ label:hover, a:hover
     
     transition: color 0.5s ease;
 }
-
 .round-rotated-button:active,
 .round-rotated-button:hover
 {
     transform: rotate(0deg);
 }
-
 .round-rotated-button:active:after,
 .round-rotated-button:hover:after
 {
     color: #f52525;
+}
+label.round-rotated-button,
+a.round-rotated-button
+{
+    color: transparent;
+    overflow: hidden;
 }
 
 .form-field
@@ -415,7 +410,7 @@ section.animated
 }
 
 /* open panel animation */
-input.controller:not(#closeController):checked ~ #container #panel.animated
+.controller:not(#closeController):target ~ #container #panel.animated
 {
     animation-name: panelOpen;
     
@@ -425,7 +420,7 @@ input.controller:not(#closeController):checked ~ #container #panel.animated
 }
 
 /* close panel animation */
-#closeController:checked ~ #container #panel.animated
+#closeController:target ~ #container #panel.animated
 {
     max-height: 3000px;
     
@@ -437,10 +432,10 @@ input.controller:not(#closeController):checked ~ #container #panel.animated
 }
 
 /* section in animation */
-#page1Controller:checked ~ #container #panel section#page1,
-#contactController:checked ~ #container #panel section#contact,
-#projectsController:checked ~ #container #panel section#projects,
-#technoController:checked ~ #container #panel section#techno
+#page1Controller:target ~ #container #panel section#page1,
+#contactController:target ~ #container #panel section#contact,
+#projectsController:target ~ #container #panel section#projects,
+#technoController:target ~ #container #panel section#techno
 {
     position: relative;
     opacity: 0;
@@ -455,10 +450,10 @@ input.controller:not(#closeController):checked ~ #container #panel.animated
 }
 
 /* section out animation */
-input.controller:not(#page1Controller):checked ~ #container #panel section#page1,
-input.controller:not(#contactController):checked ~ #container #panel section#contact,
-input.controller:not(#projectsController):checked ~ #container #panel section#projects,
-input.controller:not(#technoController):checked ~ #container #panel section#techno
+.controller:not(#page1Controller):target ~ #container #panel section#page1,
+.controller:not(#contactController):target ~ #container #panel section#contact,
+.controller:not(#projectsController):target ~ #container #panel section#projects,
+.controller:not(#technoController):target ~ #container #panel section#techno
 {
     position: absolute;
     
@@ -517,4 +512,9 @@ input.controller:not(#technoController):checked ~ #container #panel section#tech
     position:absolute;
     opacity: 0;
     font-size:1px;
+}
+.controller
+{
+    /* use position fixed to avoid browser jumping, since using :target to maintain menu states */
+    position: fixed !important;
 }

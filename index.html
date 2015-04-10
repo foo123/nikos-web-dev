@@ -11,287 +11,285 @@
 <!--[if gt IE 8]><!-->
 <html class="no-ie" lang="en">
 <!--<![endif]-->
-    
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico?" />
-    <meta name="keywords" content="nikos,full-stack,web,development,applications,design,html,css,flash,joomla,wordpress,drupal,modx,javascript,actionscript,php,python,c,java,spring,hibernate,freelance,athens,greece" /> 
-    <meta name="description" content="nikos full-stack development web development applications web design freelance athens greece php python c c++ node javascript java spring hibernate actionscript flash html css joomla wordpress modx drupal mobile dsp" /> 
-    <title>nikos web development full-stack development freelance athens greece</title>
-    <link rel="stylesheet" href="style.min.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="controls.min.css" type="text/css" media="screen" />
-    <style type="text/css">
-        label.round-rotated-button
-        {
-            color: transparent;
-            overflow: hidden;
-        }
-        form.form input[type=radio] + label.replace,
-        form.form input[type=checkbox] + label.replace
-        {
-            width: 24px;
-            height: 24px;
-            line-height: 24px;
-            font-size: 24px;
-            color: #f52525;
-            background-color: #222;
-        }
-    </style>
-    <!-- Include Font Awesome -->
-    <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />-->
-    <!-- Include editor style file -->
-    <!--<link href="../css/froala_editor.min.css" rel="stylesheet" type="text/css" />-->
-    <!--<script type="text/javascript" src="jquery.min.js"></script>-->
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!-- Include editor javascript file -->
-    <!--<script src="../js/froala_editor.min.js"></script>-->
-    <script type='text/javascript'>/* <![CDATA[ */
-    !function( window, $ ) {
-        var $mailform, $reqfields, $submit, $reset, $msg, $loader, $butts, $sections, are_hidden = 1, made_visible = 0;
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="favicon.ico?" />
+<meta name="keywords" content="nikos,full-stack,web,development,applications,design,html,css,flash,joomla,wordpress,drupal,modx,javascript,actionscript,php,python,c,java,spring,hibernate,freelance,athens,greece" /> 
+<meta name="description" content="nikos full-stack development web development applications web design freelance athens greece php python c c++ node javascript java spring hibernate actionscript flash html css joomla wordpress modx drupal mobile dsp" /> 
+<title>nikos web development full-stack development freelance athens greece</title>
+<link rel="stylesheet" href="style.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="controls-spinners.min.css" type="text/css" media="screen" />
+<style type="text/css">
+.ui-spinner.ui-spinner-inline 
+{
+    height: 24px !important;
+    width: 24px !important;
+}
+form.form input[type=radio] + label.replace,
+form.form input[type=checkbox] + label.replace
+{
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 24px;
+    color: #f52525;
+    background-color: #222;
+}
+</style>
+<!-- Include Font Awesome -->
+<!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />-->
+<!-- Include editor style file -->
+<!--<link href="../css/froala_editor.min.css" rel="stylesheet" type="text/css" />-->
+<!--<script type="text/javascript" src="jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include editor javascript file -->
+<!--<script src="../js/froala_editor.min.js"></script>-->
+<script type='text/javascript'>/* <![CDATA[ */
+!function( window, $ ) {
+    var $mailform, $reqfields, $submit, $reset, $msg, $loader, $butts, $sections, are_hidden = 1, made_visible = 0;
+    
+    var trim = function(s) { return s.replace(/^\s+/, '').replace(/\s+$/, ''); };
+    var isOpera = /Opera|OPR\//.test(navigator.userAgent);
+    
+    /* document ready */
+    $(function( ){
+        /* assign global vars */
+        if (isOpera) $('body').addClass('opera');
         
-        var trim = function(s) { return s.replace(/^\s+/, '').replace(/\s+$/, ''); };
-        var isOpera = /Opera|OPR\//.test(navigator.userAgent);
+        $mailform = $('#mailform');
+        $submit = $mailform.find('#submitbt');
+        $reset = $mailform.find('#resetbt');
+        $reqfields = $mailform.find(".req");
+        $msg = $("#msg");
+        $loader = $("#loader1").removeClass('active');
         
-        /* document ready */
-        $(function( ){
-            /* assign global vars */
-            if (isOpera) $('body').addClass('opera');
+        /*
+        var handler = function(){
+            if ( are_hidden )
+            {
+                are_hidden = 0;
+            }
+            else if ( !made_visible )
+            {
+                $sections.css('visibility', 'visible');
+                made_visible = 1;
+            }
+            else
+            {
+                $menus.unbind('click', handler);
+            }
+        };
+        $menus = $('.content');
+        $sections = $('section.initially-hidden');
+        
+        $menus.bind('click', handler);
+        */
+        
+        /* ajax form handling */
+        $submit.click( function( e ) {
+            e.preventDefault();
             
-            $mailform = $('#mailform');
-            $submit = $mailform.find('#submitbt');
-            $reset = $mailform.find('#resetbt');
-            $reqfields = $mailform.find(".req");
-            $msg = $("#msg");
-            $loader = $("#loader1").hide();
+            $submit.attr("disabled", "disabled");
+            $reset.attr("disabled", "disabled");
             
-            /*
-            var handler = function(){
-                if ( are_hidden )
-                {
-                    are_hidden = 0;
-                }
-                else if ( !made_visible )
-                {
-                    $sections.css('visibility', 'visible');
-                    made_visible = 1;
-                }
-                else
-                {
-                    $menus.unbind('click', handler);
-                }
-            };
-            $menus = $('.content');
-            $sections = $('section.initially-hidden');
+            var err = 0;
             
-            $menus.bind('click', handler);
-            */
-            
-            /* ajax form handling */
-            $submit.click( function( e ) {
-                e.preventDefault();
-                
-                $submit.attr("disabled", "disabled");
-                $reset.attr("disabled", "disabled");
-                
-                var err = 0;
-                
-                $reqfields.each(function(){
-                    var $this = $(this);
-                    if ( !trim( $this.val() ).length || $this.is(':invalid') ) err++;
-                });
-
-                if ( err && $reqfields.length )
-                {
-                    $msg.html("<span class='errortext'>required fields are missing..</span>");
-                    $submit.removeAttr("disabled");
-                    $reset.removeAttr("disabled");
-                    return false;
-                }
-
-                $msg.html("<span class='sendingtext'>&nbsp;&nbsp;sending..</span>");
-                $loader.show();
-                $.ajax({
-                    type: 'POST',
-                    url: "ajaxform.php", 
-                    data: $mailform.serialize(),
-                    success: function(data){
-                        $loader.hide();
-                        /*console.log(data);*/
-                        if ( "true" == data )
-                            $msg.html("<span class='successtext'>mail is on its way, thanx. i'll get in touch as soon as i can.</span>");
-                        else
-                            $msg.html("<span class='errortext'>mail could not be sent! check your email is correct and try again..</span>");
-                        $submit.removeAttr("disabled");
-                    },
-                    error: function(data){
-                        $loader.hide();
-                        /*console.log(data);*/
-                        $msg.html("<span class='errortext'>server error occured, try again later..</span>");
-                        $submit.removeAttr("disabled");
-                    }
-                });
-                $reset.removeAttr("disabled");
+            $reqfields.each(function(){
+                var $this = $(this);
+                if ( !trim( $this.val() ).length || $this.is(':invalid') ) err++;
             });
 
-            $reset.click(function(e){
-                $msg.empty();
-                $loader.hide();
+            if ( err && $reqfields.length )
+            {
+                $msg.html("<span class='errortext'>required fields are missing..</span>");
                 $submit.removeAttr("disabled");
-            });
-        });  
-    }( window, jQuery );
-    /*]]>*/</script>
-</head>
+                $reset.removeAttr("disabled");
+                return false;
+            }
 
+            $msg.html("<span class='sendingtext'>&nbsp;&nbsp;sending..</span>");
+            $loader.addClass('active');
+            $.ajax({
+                type: 'POST',
+                url: "ajaxform.php", 
+                data: $mailform.serialize(),
+                success: function(data){
+                    $loader.removeClass('active');
+                    /*console.log(data);*/
+                    if ( "true" == data )
+                        $msg.html("<span class='successtext'>mail is on its way, thanx. i'll get in touch as soon as i can.</span>");
+                    else
+                        $msg.html("<span class='errortext'>mail could not be sent! check your email is correct and try again..</span>");
+                    $submit.removeAttr("disabled");
+                },
+                error: function(data){
+                    $loader.removeClass('active');
+                    /*console.log(data);*/
+                    $msg.html("<span class='errortext'>server error occured, try again later..</span>");
+                    $submit.removeAttr("disabled");
+                }
+            });
+            $reset.removeAttr("disabled");
+        });
+
+        $reset.click(function(e){
+            $msg.empty();
+            $loader.removeClass('active');
+            $submit.removeAttr("disabled");
+        });
+    });  
+}( window, jQuery );
+/*]]>*/</script>
+</head>
 <body class="center-vertical-wrapper">
+
+<h1 class="invis">Nikos Web Development Applications Web Design freelance Athens Greece php python node java flash html css javascript actionscript joomla wordpress modx drupal spring struts hibernate mobile phonegap dsp</h1>
+<div class="invis"><strong>Web Freelance Development Athens Greece, Web Design Athens Greece, PHP Freelance Development Athens Greece, Java Freelance Development Athens Greece, Flash Freelance Development Athens Greece, Actionscript Freelance Development Athens Greece, Javascript Freelance Development Athens Greece, Coldfusion Freelance Development Athens Greece, Mobile App Freelance Development Athens Greece</strong></div>
+<div class="invis"><strong>java Development Greece, j2ee development, enterprise java, jvm, struts, spring, hibernate, tomcat, tomee, jpa, ejb, osgi, glassfish, mvc, orm</strong></div>
+<div class="invis"><strong>Joomla Development Greece, Wordpress Development Greece, MODx Development Greece, Drupal Development Greece, Magento Development Greece, osCommerce Greece, prestashop development, SEO expert athens greece</strong></div>
+<div class="invis"><strong>Android Development Greece, iPhone Development Greece, Smartphone Greece, seo expert athens greece</strong></div>
+<div class="invis"><strong>web design and web development in web 2.0 mashup html css w3c jquery mootools backbone knockout flash joomla wordpress drupal magento oscommerce modx cms e-shop php mysql cakephp codeigniter symfony doctrine contemplate smarty java spring struts hibernate coldfusion cfml node.js backbone knockout angular facebook dsp digital signal processing seo search engine optimization security scalability mobile app development smartphone development iphone android</strong></div>
+<div class="invis"><strong>speed scalability security seo  search engine optimization freelance greece web development web design web applications memcache php development cakePHP codeigniter symfony doctrine contemplate smarty twig jade apache MVC joomla development joomla modules joomla components joomla plugins wordpress development wordpress plugins modx development drupal development magento development oscommerce development prestashop java development j2ee spring hibernate ORM struts tomcat tomee glassfish flash development actionscript development nodejs development node.js backbone.js knockout.js angular.js development state of the art html 5 development css 3 javascript development jquery mootools dojo rdbms mysql mongodb nosql mobile apps phonegap</strong></div>
+<div class="invis"><strong>Διαδικτυακές Εφαρμογές, Δυναμικές Ιστοσελίδες, Προγραμματισμός, Εφαρμογές WEB, Σχεδίαση Εφαρμογών</strong></div>
+
+<!-- page controllers -->
+<span class="controller invis" type="radio" id="technoController"></span>
+<span class="controller invis" type="radio" id="contactController"></span>
+<span class="controller invis" type="radio" id="projectsController"></span>
+<span class="controller invis" type="radio" id="page1Controller"></span>
+<span class="controller invis" type="radio" id="closeController"></span>
+<!-- /page controllers -->
+
+<div id="container" class="center-horizontal-wrapper">
     
-    <h1 class="invis">Nikos Web Development Applications Web Design freelance Athens Greece php python node java flash html css javascript actionscript joomla wordpress modx drupal spring struts hibernate mobile phonegap dsp</h1>
-    <div class="invis"><strong>Web Freelance Development Athens Greece, Web Design Athens Greece, PHP Freelance Development Athens Greece, Java Freelance Development Athens Greece, Flash Freelance Development Athens Greece, Actionscript Freelance Development Athens Greece, Javascript Freelance Development Athens Greece, Coldfusion Freelance Development Athens Greece, Mobile App Freelance Development Athens Greece</strong></div>
-    <div class="invis"><strong>java Development Greece, j2ee development, enterprise java, jvm, struts, spring, hibernate, tomcat, tomee, jpa, ejb, osgi, glassfish, mvc, orm</strong></div>
-    <div class="invis"><strong>Joomla Development Greece, Wordpress Development Greece, MODx Development Greece, Drupal Development Greece, Magento Development Greece, osCommerce Greece, prestashop development, SEO expert athens greece</strong></div>
-    <div class="invis"><strong>Android Development Greece, iPhone Development Greece, Smartphone Greece, seo expert athens greece</strong></div>
-    <div class="invis"><strong>web design and web development in web 2.0 mashup html css w3c jquery mootools backbone knockout flash joomla wordpress drupal magento oscommerce modx cms e-shop php mysql cakephp codeigniter symfony doctrine contemplate smarty java spring struts hibernate coldfusion cfml node.js backbone knockout angular facebook dsp digital signal processing seo search engine optimization security scalability mobile app development smartphone development iphone android</strong></div>
-    <div class="invis"><strong>speed scalability security seo  search engine optimization freelance greece web development web design web applications memcache php development cakePHP codeigniter symfony doctrine contemplate smarty twig jade apache MVC joomla development joomla modules joomla components joomla plugins wordpress development wordpress plugins modx development drupal development magento development oscommerce development prestashop java development j2ee spring hibernate ORM struts tomcat tomee glassfish flash development actionscript development nodejs development node.js backbone.js knockout.js angular.js development state of the art html 5 development css 3 javascript development jquery mootools dojo rdbms mysql mongodb nosql mobile apps phonegap</strong></div>
-    <div class="invis"><strong>Διαδικτυακές Εφαρμογές, Δυναμικές Ιστοσελίδες, Προγραμματισμός, Εφαρμογές WEB, Σχεδίαση Εφαρμογών</strong></div>
-    
-    <!-- page controllers -->
-    <input name="menuControllers" class="controller invis" type="radio" id="technoController" />
-    <input name="menuControllers" class="controller invis" type="radio" id="contactController" />
-    <input name="menuControllers" class="controller invis" type="radio" id="projectsController" />
-    <input name="menuControllers" class="controller invis" type="radio" id="page1Controller" />
-    <input name="menuControllers" class="controller invis" type="radio" id="closeController" />
-    <!-- /page controllers -->
-    
-    <div id="container" class="center-horizontal-wrapper">
+    <div class="fluid col-1-2 float-none text-center" style="padding-left: 10px; padding-right: 10px;">
         
-        <div class="fluid col-1-2 float-none text-center" style="padding-left: 10px; padding-right: 10px;">
+        <header id="header" role="banner" class="fluid col-1-1 text-center">
             
-            <header id="header" role="banner" class="fluid col-1-1 text-center">
-                
-                <div class="fluid col-1-1 float-none" style="max-width:480px;">
-                    <div id="logo" class="fluid col-1-1 aspect"></div>
-                </div>
-                
-                <nav id="nav" role="navigation" class="fluid col-1-2 float-none preserve text-center center-h clearfloat">
-                    <div class="fluid col-1-3 float-left menu">
-                        <div class="relative aspect asp-1-1"></div>
-                        <label for="technoController" class="content">
-                            <p class="text text-center center-transform animated fadeIn">techno logies</p>
-                            <p id="techno-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
-                        </label>
-                    </div>
-                    <div class="fluid col-1-3 float-left menu">
-                        <div class="relative aspect asp-1-1"></div>
-                        <label for="projectsController" class="content">
-                            <p class="text text-center center-transform animated fadeIn">projects (github)</p>
-                            <p id="projects-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
-                        </label>
-                    </div>
-                    <div class="fluid col-1-3 float-left menu">
-                        <div class="relative aspect asp-1-1"></div>
-                        <label for="contactController" class="content">
-                            <p class="text text-center center-transform animated fadeIn">contact me</p>
-                            <p id="contact-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
-                        </label>
-                    </div>
-                </nav>
-            
-            </header>
-            
-            <div id="panel" class="fluid col-1-1 animated">
-                
-                <section id="techno" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
-                    <div class="fuild col-1-1 text-center"><label for="closeController" class="round-rotated-button">close</label></div>
-                    <img src="logos.png" title="full-stack development web design and development in web 2.0 mashup html css w3c javascript jquery mootools actionscript flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js c c++ dsp digital signal processing seo search engine optimization security scalability mobile app development phonegap" alt="full-stack development web design and development in web 2.0 mashup html css w3c javascript jquery mootools actionscript flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js c c++ dsp digital signal processing seo search engine optimization security scalability mobile app development phonegap nativeScript javascript to native framework" />
-                </section>
-                
-                <section id="projects" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
-                    <div class="fuild col-1-1 text-center"><label for="closeController" class="round-rotated-button">close</label></div>
-                    <a href="http://foo123.github.io/" target="_blank"><img src="projects.png" title="Projects: Classy.js Object-Oriented Framework, Contemplate Template Engine, ModelView MVVM / MVC Framework, Dromeo Router, Dialect SQL, Xpresion Expression Parser Engine, Beeld Builder Framework, Filter.js Image Processing Library, HAAR.js Computer Vision Feature Detection, AS3 Transitions Library, RegexAnalyzer Regular Expressions Analyzer, PublishSubscribe Pattern Module, Abacus Combinatorics library, CodeMirror Editor Grammar plugin, ACE Editor Grammar plugin, Games: 3D Rubik Cube in pure JavaScript, Sudoku game builder and solver in javascript, French and SAmerical Billiard game in pure javascript" /></a>
-                </section>
-                
-                <section id="contact" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
-                    <div class="fuild col-1-1 text-center"><label for="closeController" class="round-rotated-button">close</label></div>
-                    <div class="fluid col-1-1">
-                        <div class="fluid col-4-5 float-right clearfloat">
-                            <div class="fluid col-2-5 float-left text-left" style="font-size:0.78em;">
-                                full-stack developer | software engineer located at athens, greece.
-                            </div>
-                            <ul class="fluid col-2-5 float-right text-left" style="font-size:0.64em;">
-                                <li><label for="page1Controller"><b style="font-size: 12px;">please read this first</b></label></li>
-                                <li><b>e-mail:</b> nikosms0 [at] gmail [dot] com</li>
-                                <li><b>cell:</b> (+30) 698 32 35 423</li>
-                            </ul>
-                        </div>
-                        <form id="mailform" class="fluid col-1-1 form text-left clearfloat">
-                            <div class="fluid col-1-1">
-                                <div class="fluid col-5-6 text-left float-right">
-                                    <div id="msg" class="fluid"></div>
-                                    <div id="loader1" class="loader"></div>
-                                </div>
-                            </div>
-                            <div class="fluid col-1-1" style="padding-right:5px;">
-                                <label for="uname" class='fluid col-1-6 label'>name (req)</label>
-                                <input type="text" class="fluid col-5-6 form-field req" name="uname" id="uname" />
-                            </div>
-                            <div class="fluid col-1-1" style="padding-right:5px;">
-                                <label for="umail" class='fluid col-1-6 label'>email (req)</label>
-                                <input type="email" class="fluid col-5-6 form-field req" name="umail" id="umail"  />
-                            </div>
-                            <div class="fluid col-1-1" style="padding-right:5px;">
-                                <label for="uwebsite" class='fluid col-1-6 label'>website</label>
-                                <input type="url" class="fluid col-5-6 form-field" name="uwebsite" id="uwebsite"  />
-                            </div>
-                            <div class="fluid col-1-1" style="padding-right:5px;">
-                                <label for="utext" class='fluid col-1-6 label'>text (req)</label>
-                                <textarea class="fluid col-5-6 form-field req" name="utext" id="utext" rows="5"></textarea>
-                            </div>
-                            <div class="fluid col-1-1 text-right clearfloat" style="margin:10px 0 20px 0">
-                                <label for="usendreply" class="label">Send notification of sent mail</label> 
-                                <input type="checkbox" name="usendreply" id="usendreply" class="hide" value="yes" /><label for="usendreply" class="replace"></label>
-                            </div>
-                            <div class="fluid col-1-1 text-right clearfloat">
-                                <input type="reset" name="resetbt" id="resetbt" class="button fluid col-1-5 float-right" value="clear" />
-                                <input type="submit" name="submitbt" id="submitbt" class="button fluid col-1-5 float-right"  value="send" />
-                            </div>
-                        </form>
-                    </div>
-                </section>
-                
-                <section id="page1" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
-                    <div class="fuild col-1-1 text-center"><label for="closeController" class="round-rotated-button">close</label></div>
-                    <div class="fluid col-1-1 page">
-                        <p>
-                            Only contacts for <b>full projects</b> will be considered. Proposals for projects that are almost finished but just miss a couple of details will not be considered. If you have some questions or need some code, <b>Stack Overflow</b>, <b>Github</b> and specific software forums can be very helpful <i>(i go there myself too)</i>.
-                        </p>
-                        
-                        <p>
-                            If you need help with some of my projects (eg. on Github), opening an issue there might be the best option, alternatively you can try the email.
-                        </p>
-                        
-                        <p>
-                            Make sure you read the <label for="technoController"><b>technologies section</b></label> in order to have an understanding of the things i am involved, and working (these can change from time to time) however there are things <b>i do not (currently) do</b> or <b>not (currently) have the time/mood/knowledge/doanythingformoney level</b>.
-                        </p>
-                        
-                        <p>
-                            You <b>dont need to give</b> <i>(and i dont need to have)</i> any of your <b>server's passwords or access</b> or other similar details (actually it might be better for you if you dont give me such information). You can make a project proposal, i can develop it and hand you the result, simple and clean.
-                        </p>
-                        
-                        <p>
-                            Payments are made <b>(only)</b> via <b>Paypal</b>, so if that is an issue for you, then no bother taking this further.
-                        </p>
-                    </div>
-                </section>
+            <div class="fluid col-1-1 float-none" style="max-width:480px;">
+                <div id="logo" class="fluid col-1-1 aspect"></div>
             </div>
             
-            <footer id="footer" role="contentinfo" class="fluid col-1-1 text-center">
-                <strong class="punchline">Get the job done.</strong> 
-                <span class="inset">Freelance</span> <span class="bracket inset">Code</span>
-            </footer>
+            <nav id="nav" role="navigation" class="fluid col-1-2 float-none preserve text-center center-h clearfloat">
+                <div class="fluid col-1-3 float-left menu">
+                    <div class="relative aspect asp-1-1"></div>
+                    <a href="#technoController" class="content">
+                        <p class="text text-center center-transform animated fadeIn">techno logies</p>
+                        <p id="techno-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
+                    </a>
+                </div>
+                <div class="fluid col-1-3 float-left menu">
+                    <div class="relative aspect asp-1-1"></div>
+                    <a href="#projectsController" class="content">
+                        <p class="text text-center center-transform animated fadeIn">projects (github)</p>
+                        <p id="projects-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
+                    </a>
+                </div>
+                <div class="fluid col-1-3 float-left menu">
+                    <div class="relative aspect asp-1-1"></div>
+                    <a href="#contactController" class="content">
+                        <p class="text text-center center-transform animated fadeIn">contact me</p>
+                        <p id="contact-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
+                    </a>
+                </div>
+            </nav>
         
+        </header>
+        
+        <div id="panel" class="fluid col-1-1 animated">
+            
+            <section id="techno" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
+                <div class="fuild col-1-1 text-center"><a href="#closeController" class="round-rotated-button">close</a></div>
+                <img src="logos.png" title="full-stack development web design and development in web 2.0 mashup html css w3c javascript jquery mootools actionscript flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js c c++ dsp digital signal processing seo search engine optimization security scalability mobile app development phonegap" alt="full-stack development web design and development in web 2.0 mashup html css w3c javascript jquery mootools actionscript flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js c c++ dsp digital signal processing seo search engine optimization security scalability mobile app development phonegap nativeScript javascript to native framework" />
+            </section>
+            
+            <section id="projects" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
+                <div class="fuild col-1-1 text-center"><a href="#closeController" class="round-rotated-button">close</a></div>
+                <a href="http://foo123.github.io/" target="_blank"><img src="projects.png" title="Projects: Classy.js Object-Oriented Framework, Contemplate Template Engine, ModelView MVVM / MVC Framework, Dromeo Router, Dialect SQL, Xpresion Expression Parser Engine, Beeld Builder Framework, Filter.js Image Processing Library, HAAR.js Computer Vision Feature Detection, AS3 Transitions Library, RegexAnalyzer Regular Expressions Analyzer, PublishSubscribe Pattern Module, Abacus Combinatorics library, CodeMirror Editor Grammar plugin, ACE Editor Grammar plugin, Games: 3D Rubik Cube in pure JavaScript, Sudoku game builder and solver in javascript, French and SAmerical Billiard game in pure javascript" /></a>
+            </section>
+            
+            <section id="contact" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
+                <div class="fuild col-1-1 text-center"><a href="#closeController" class="round-rotated-button">close</a></div>
+                <div class="fluid col-1-1">
+                    <div class="fluid col-4-5 float-right clearfloat">
+                        <div class="fluid col-2-5 float-left text-left" style="font-size:0.78em;">
+                            full-stack developer | software engineer located at athens, greece.
+                        </div>
+                        <ul class="fluid col-2-5 float-right text-left" style="font-size:0.64em;">
+                            <li><a href="#page1Controller"><b style="font-size: 12px;">please read this first</b></a></li>
+                            <li><b>e-mail:</b> nikosms0 [at] gmail [dot] com</li>
+                            <li><b>cell:</b> (+30) 698 32 35 423</li>
+                        </ul>
+                    </div>
+                    <form id="mailform" class="fluid col-1-1 form text-left clearfloat">
+                        <div class="fluid col-1-1">
+                            <div class="fluid col-5-6 text-left float-right">
+                                <div id="msg" class="fluid"></div>
+                                <div id="loader1" class="ui-spinner ui-spinner-inline ui-spin"></div>
+                            </div>
+                        </div>
+                        <div class="fluid col-1-1" style="padding-right:5px;">
+                            <label for="uname" class='fluid col-1-6 label'>name (req)</label>
+                            <input type="text" class="fluid col-5-6 form-field req" name="uname" id="uname" />
+                        </div>
+                        <div class="fluid col-1-1" style="padding-right:5px;">
+                            <label for="umail" class='fluid col-1-6 label'>email (req)</label>
+                            <input type="email" class="fluid col-5-6 form-field req" name="umail" id="umail"  />
+                        </div>
+                        <div class="fluid col-1-1" style="padding-right:5px;">
+                            <label for="uwebsite" class='fluid col-1-6 label'>website</label>
+                            <input type="url" class="fluid col-5-6 form-field" name="uwebsite" id="uwebsite"  />
+                        </div>
+                        <div class="fluid col-1-1" style="padding-right:5px;">
+                            <label for="utext" class='fluid col-1-6 label'>text (req)</label>
+                            <textarea class="fluid col-5-6 form-field req" name="utext" id="utext" rows="5"></textarea>
+                        </div>
+                        <div class="fluid col-1-1 text-right clearfloat" style="margin:10px 0 20px 0">
+                            <label for="usendreply" class="label">Send notification of sent mail</label> 
+                            <input type="checkbox" name="usendreply" id="usendreply" class="hide" value="yes" /><label for="usendreply" class="replace"></label>
+                        </div>
+                        <div class="fluid col-1-1 text-right clearfloat">
+                            <input type="reset" name="resetbt" id="resetbt" class="button fluid col-1-5 float-right" value="clear" />
+                            <input type="submit" name="submitbt" id="submitbt" class="button fluid col-1-5 float-right"  value="send" />
+                        </div>
+                    </form>
+                </div>
+            </section>
+            
+            <section id="page1" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
+                <div class="fuild col-1-1 text-center"><a href="#closeController" class="round-rotated-button">close</a></div>
+                <div class="fluid col-1-1 page">
+                    <p>
+                        Only contacts for <b>full projects</b> will be considered. Proposals for projects that are almost finished but just miss a couple of details will not be considered. If you have some questions or need some code, <b>Stack Overflow</b>, <b>Github</b> and specific software forums can be very helpful <i>(i go there myself too)</i>.
+                    </p>
+                    
+                    <p>
+                        If you need help with some of my projects (eg. on Github), opening an issue there might be the best option, alternatively you can try the email.
+                    </p>
+                    
+                    <p>
+                        Make sure you read the <a href="#technoController"><b>technologies section</b></a> in order to have an understanding of the things i am involved, and working (these can change from time to time) however there are things <b>i do not (currently) do</b> or <b>not (currently) have the time/mood/knowledge/doanythingformoney level</b>.
+                    </p>
+                    
+                    <p>
+                        You <b>dont need to give</b> <i>(and i dont need to have)</i> any of your <b>server's passwords or access</b> or other similar details (actually it might be better for you if you dont give me such information). You can make a project proposal, i can develop it and hand you the result, simple and clean.
+                    </p>
+                    
+                    <p>
+                        Payments are made <b>(only)</b> via <b>Paypal</b>, so if that is an issue for you, then no bother taking this further.
+                    </p>
+                </div>
+            </section>
         </div>
-        <div class="clear-both"></div>
+        
+        <footer id="footer" role="contentinfo" class="fluid col-1-1 text-center">
+            <strong class="punchline">Get the job done.</strong> 
+            <span class="inset">Freelance</span> <span class="bracket inset">Code</span>
+        </footer>
+    
     </div>
+    <div class="clear-both"></div>
+</div>
 </body>
 </html>
