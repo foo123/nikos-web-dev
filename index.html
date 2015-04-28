@@ -35,6 +35,144 @@ form.form input[type=checkbox] + label.replace
     color: #f52525;
     background-color: #222;
 }
+
+.menu-sprite
+{
+    /* number of sprites x 100% */
+    -webkit-background-size: 400%;
+    -moz-background-size: 400%;
+    background-size: 400%;
+}
+/* sprite index x (100/num_sprites-1)% */
+#techno-sprite.menu-sprite
+{
+    background-position: 0% 0;
+}
+#contact-sprite.menu-sprite
+{
+    background-position: 33% 0;
+}
+#projects-sprite.menu-sprite
+{
+    background-position: 66% 0;
+}
+#stackexchange-sprite.menu-sprite
+{
+    background-position: 100% 0;
+}
+p.text
+{
+    font-size: 1.0em;
+}
+#nav 
+{
+    max-width: 300px;
+}
+
+#panel.animated
+{
+    overflow: hidden;
+    max-height: 0px;
+    height: auto;
+}
+/* open panel animation */
+.controller:not(#main_tab):target ~ #container #panel.animated
+{
+    -webkit-animation-name: panelOpen;
+    -moz-animation-name: panelOpen;
+    -o-animation-name: panelOpen;
+    animation-name: panelOpen;
+    
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;
+    -o-animation-delay: 0s;
+    animation-delay: 0s;
+    
+    -webkit-animation-timing-function: ease;
+    -moz-animation-timing-function: ease;
+    -o-animation-timing-function: ease;
+    animation-timing-function: ease;
+}
+
+/* close panel animation */
+#main_tab:target ~ #container #panel.animated
+{
+    max-height: 3000px;
+    
+    -webkit-animation-name: panelClose;
+    -moz-animation-name: panelClose;
+    -o-animation-name: panelClose;
+    animation-name: panelClose;
+    
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    -o-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+
+/* section in animation */
+#page1_tab:target ~ #container #panel section#page1,
+#contact_tab:target ~ #container #panel section#contact,
+#projects_tab:target ~ #container #panel section#projects,
+#technologies_tab:target ~ #container #panel section#techno
+{
+    position: relative;
+    opacity: 0;
+    
+    -webkit-animation-name: showIt, sectionIn;
+    -moz-animation-name: showIt, sectionIn;
+    -o-animation-name: showIt, sectionIn;
+    animation-name: showIt, sectionIn;
+    
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    -o-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+    
+    -webkit-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    -o-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    -o-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+
+/* section out animation */
+.controller:not(#page1_tab):target ~ #container #panel section#page1,
+.controller:not(#contact_tab):target ~ #container #panel section#contact,
+.controller:not(#projects_tab):target ~ #container #panel section#projects,
+.controller:not(#technologies_tab):target ~ #container #panel section#techno
+{
+    position: absolute;
+    
+    -webkit-animation-name: sectionOut, hideIt;
+    -moz-animation-name: sectionOut, hideIt;
+    -o-animation-name: sectionOut, hideIt;
+    animation-name: sectionOut, hideIt;
+    
+    -webkit-animation-delay: 0s, 1s;
+    -moz-animation-delay: 0s, 1s;
+    -o-animation-delay: 0s, 1s;
+    animation-delay: 0s, 1s;
+    
+    -webkit-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    -o-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+}
 </style>
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type='text/javascript'>/* <![CDATA[ */
@@ -124,11 +262,11 @@ form.form input[type=checkbox] + label.replace
 <div class="invis"><strong>Διαδικτυακές Εφαρμογές, Δυναμικές Ιστοσελίδες, Προγραμματισμός, Εφαρμογές WEB, Σχεδίαση Εφαρμογών</strong></div>
 
 <!-- page controllers -->
-<span class="controller invis" id="technoController"></span>
-<span class="controller invis" id="contactController"></span>
-<span class="controller invis" id="projectsController"></span>
-<span class="controller invis" id="page1Controller"></span>
-<span class="controller invis" id="closeController"></span>
+<span class="controller invis" id="technologies_tab"></span>
+<span class="controller invis" id="contact_tab"></span>
+<span class="controller invis" id="projects_tab"></span>
+<span class="controller invis" id="page1_tab"></span>
+<span class="controller invis" id="main_tab"></span>
 <!-- /page controllers -->
 
 <div id="container" class="center-horizontal-wrapper">
@@ -141,26 +279,33 @@ form.form input[type=checkbox] + label.replace
                 <div id="logo" class="fluid col-1-1 aspect"></div>
             </div>
             
-            <nav id="nav" role="navigation" class="fluid col-1-2 float-none preserve text-center center-h clearfloat">
-                <div class="fluid col-1-3 float-left menu">
+            <nav id="nav" role="navigation" class="fluid col-2-3 float-none preserve text-center center-h clearfloat">
+                <div class="fluid col-1-4 float-left menu">
                     <div class="relative aspect asp-1-1"></div>
-                    <a href="#technoController" class="content">
+                    <a href="#technologies_tab" class="content">
                         <p class="text text-center center-transform animated fadeIn">techno logies</p>
                         <p id="techno-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
                     </a>
                 </div>
-                <div class="fluid col-1-3 float-left menu">
+                <div class="fluid col-1-4 float-left menu">
                     <div class="relative aspect asp-1-1"></div>
-                    <a href="#projectsController" class="content">
+                    <a href="#projects_tab" title="Nikos M. on Github" class="content">
                         <p class="text text-center center-transform animated fadeIn">projects (github)</p>
                         <p id="projects-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
                     </a>
                 </div>
-                <div class="fluid col-1-3 float-left menu">
+                <div class="fluid col-1-4 float-left menu">
                     <div class="relative aspect asp-1-1"></div>
-                    <a href="#contactController" class="content">
+                    <a href="#contact_tab" class="content">
                         <p class="text text-center center-transform animated fadeIn">contact me</p>
                         <p id="contact-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
+                    </a>
+                </div>
+                <div class="fluid col-1-4 float-left menu">
+                    <div class="relative aspect asp-1-1"></div>
+                    <a href="http://stackexchange.com/users/4021056/nikos-m?tab=accounts" title="Nikos M. on StackExchange"  target="_blank" class="content">
+                        <p class="text text-center center-transform animated fadeIn">stack exchange</p>
+                        <p id="stackexchange-sprite" class="fluid col-1-1 aspect menu-sprite center-transform animated fadeOut"></p>
                     </a>
                 </div>
             </nav>
@@ -170,24 +315,24 @@ form.form input[type=checkbox] + label.replace
         <div id="panel" class="fluid col-1-1 animated">
             
             <section id="techno" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
-                <div class="fuild col-1-1 text-center"><a href="#closeController" class="round-rotated-button">close</a></div>
-                <img src="logos.png" title="full-stack development web design and development in web 2.0 mashup html css w3c javascript jquery mootools actionscript flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js c c++ dsp digital signal processing seo search engine optimization security scalability mobile app development phonegap" alt="full-stack development web design and development in web 2.0 mashup html css w3c javascript jquery mootools actionscript flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js c c++ dsp digital signal processing seo search engine optimization security scalability mobile app development phonegap nativeScript javascript to native framework" />
+                <div class="fuild col-1-1 text-center"><a href="#main_tab" class="round-rotated-button">close</a></div>
+                <img src="logos.png" title="full-stack development web design and development in web 2.0 mashup html css w3c javascript jquery mootools actionscript flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js c c++ dsp digital signal processing machine learning seo search engine optimization security scalability mobile app development phonegap nativeScript javascript to native framework" alt="full-stack development web design and development in web 2.0 mashup html css w3c javascript jquery mootools actionscript flash joomla wordpress drupal modx magento oscommerce cms e-shop php mysql cakephp symfony doctrine smarty java spring struts hibernate python node.js c c++ dsp digital signal processing machine learning seo search engine optimization security scalability mobile app development phonegap nativeScript javascript to native framework" />
             </section>
             
             <section id="projects" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
-                <div class="fuild col-1-1 text-center"><a href="#closeController" class="round-rotated-button">close</a></div>
-                <a href="http://foo123.github.io/" target="_blank"><img src="projects.png" title="Projects: Classy.js Object-Oriented Framework, Contemplate Template Engine, ModelView MVVM / MVC Framework, Dromeo Router, Dialect SQL, Xpresion Expression Parser Engine, Beeld Builder Framework, Filter.js Image Processing Library, HAAR.js Computer Vision Feature Detection, AS3 Transitions Library, RegexAnalyzer Regular Expressions Analyzer, PublishSubscribe Pattern Module, Abacus Combinatorics library, CodeMirror Editor Grammar plugin, ACE Editor Grammar plugin, Games: 3D Rubik Cube in pure JavaScript, Sudoku game builder and solver in javascript, French and SAmerical Billiard game in pure javascript" /></a>
+                <div class="fuild col-1-1 text-center"><a href="#main_tab" class="round-rotated-button">close</a></div>
+                <a href="http://foo123.github.io/" target="_blank"><img src="projects.png" title="Projects: Classy.js Object-Oriented Framework, Contemplate Template Engine, ModelView MVVM / MVC isomorphic Framework, Dromeo Router, Tao.js tiny isomorphic template engine, Dialect SQL, Xpresion Expression Parser Engine, Beeld Builder Framework, Filter.js Image Processing Library, HAAR.js Computer Vision Feature Detection, AS3 Transitions Library, RegexAnalyzer Regular Expressions Analyzer and Composer, PublishSubscribe Pattern Module, Abacus Combinatorics library, CodeMirror Editor Grammar plugin, ACE Editor Grammar plugin, Games: 3D Rubik Cube in pure JavaScript, Sudoku game builder and solver in javascript, French Billiard American Pool game in javascript" alt="Projects: Classy.js Object-Oriented Framework, Contemplate Template Engine, ModelView MVVM / MVC isomorphic Framework, Dromeo Router, Tao.js tiny isomorphic template engine, Dialect SQL, Xpresion Expression Parser Engine, Beeld Builder Framework, Filter.js Image Processing Library, HAAR.js Computer Vision Feature Detection, AS3 Transitions Library, RegexAnalyzer Regular Expressions Analyzer and Composer, PublishSubscribe Pattern Module, Abacus Combinatorics library, CodeMirror Editor Grammar plugin, ACE Editor Grammar plugin, Games: 3D Rubik Cube in pure JavaScript, Sudoku game builder and solver in javascript, French Billiard American Pool game in javascript" /></a>
             </section>
             
             <section id="contact" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
-                <div class="fuild col-1-1 text-center"><a href="#closeController" class="round-rotated-button">close</a></div>
+                <div class="fuild col-1-1 text-center"><a href="#main_tab" class="round-rotated-button">close</a></div>
                 <div class="fluid col-1-1">
                     <div class="fluid col-4-5 float-right clearfloat">
                         <div class="fluid col-2-5 float-left text-left" style="font-size:0.78em;">
                             full-stack developer | software engineer located at athens, greece.
                         </div>
                         <ul class="fluid col-2-5 float-right text-left" style="font-size:0.64em;">
-                            <li><a href="#page1Controller"><b style="font-size: 12px;">please read this first</b></a></li>
+                            <li><a href="#page1_tab"><b style="font-size: 12px;">please read this first</b></a></li>
                             <li><b>e-mail:</b> nikosms0 [at] gmail [dot] com</li>
                             <li><b>cell:</b> (+30) 698 32 35 423</li>
                         </ul>
@@ -228,7 +373,7 @@ form.form input[type=checkbox] + label.replace
             </section>
             
             <section id="page1" role="tab" class="fluid col-1-1 center-h text-center animated initially-hidden">
-                <div class="fuild col-1-1 text-center"><a href="#closeController" class="round-rotated-button">close</a></div>
+                <div class="fuild col-1-1 text-center"><a href="#main_tab" class="round-rotated-button">close</a></div>
                 <div class="fluid col-1-1 page">
                     <p>
                         Only contacts for <b>full projects</b> will be considered. Proposals for projects that are almost finished but just miss a couple of details will not be considered. If you have some questions or need some code, <b>Stack Overflow</b>, <b>Github</b> and specific software forums can be very helpful <i>(i go there myself too)</i>.
@@ -239,7 +384,7 @@ form.form input[type=checkbox] + label.replace
                     </p>
                     
                     <p>
-                        Make sure you read the <a href="#technoController"><b>technologies section</b></a> in order to have an understanding of the things i am involved, and working (these can change from time to time) however there are things <b>i do not (currently) do</b> or <b>not (currently) have the time/mood/knowledge/doanythingformoney level</b>.
+                        Make sure you read the <a href="#technologies_tab"><b>technologies section</b></a> in order to have an understanding of the things i am involved, and working (these can change from time to time) however there are things <b>i do not (currently) do</b> or <b>not (currently) have the time/mood/knowledge/doanythingformoney level</b>.
                     </p>
                     
                     <p>
