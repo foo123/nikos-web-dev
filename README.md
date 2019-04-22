@@ -3,4 +3,4 @@ nikos-web-dev
 
 site page
 
-http://nikos-web-development.netai.net/
+https://nikos-web-development.000webhostapp.com/
